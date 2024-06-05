@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Methods</title>
+    <style>
+        .container {
+            padding: 20px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 25px;
+        }
+
+        .highlight {
+            background-color: lightgreen;
+
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 25px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        div {
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>jQuery Methods</h2>
+        <button id="btn-AddClass">Add Class</button>
+        <button id="btn-RemoveClass">Remove Class</button>
+        <button id="btn-Append">Append</button>
+        <button id="btn-After">Insert After</button>
+        <button id="btn-Before">Insert Before</button>
+        <button id="btn-Replace">Replace</button>
+        <button id="btn-Attr">Set Attribute</button>
+        <!-- <button id="btn-Clone">Make Clone</button> -->
+        <button id="btn-Css">Set CSS</button>
+        <button id="btn-Empty">Empty</button>
+        <button id="btn-HasClass">Has Class</button>
+        <button id="btn-HWI">HW Info</button>
+        <button id="btn-Height">Set HW</button>
+        <button id="btn-Html">Set HTML</button>
+        <button id="btn-Prepend">Prepend</button>
+        <button id="btn-Text">Set Text</button>
+        <button id="btn-ToggleClass">Toggle Class</button>
+        <button id="btn-wrap">Wrap</button>
+        <button id="btn-unwrap">Unwrap</button>
+        <button id="btn-Remove">Remove</button>
+
+    </div>
+
+    <div class="container">
+        <!-- <div class="box">Box 1</div> -->
+        <div class="box">Box 1<p></p>
+        </div>
+        
+    </div>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // Add class to all .box elements
+            $('#btn-AddClass').click(function () {
+                $('.box').addClass('highlight');
+            });
+
+            //Replace With Box
+            $("#btn-Replace").click(function () {
+                $(".box").replaceWith("<h2>Replaced..!</h2>");
+            });
+            // $("#btn-Replace").click(function () {
+            //     $("<h2>Replaced..!</h2>").replaceAll(".box");
+            // });
+
+
+            // Insert content after .box elements
+            $('#btn-After').click(function () {
+                $('.box').after('<div class="box">New Box</div>');
+            });
+            // $("#btn-After").click(function () {
+            //     $('<div class="box">New Box</div>').insertAfter(".box");
+            // });
+
+            // Insert content Before .box elements
+            $('#btn-Before').click(function () {
+                $('.box').before('<div class="box">New Box</div>');
+            });
+            // $("button").click(function () {
+            //     $('<div class="box">New Box</div>').insertBefore('.box');
+            // });
+
+
+            // $("#btnLscroll").click(function () {
+            //     alert($("div").scrollLeft());
+            // });
+            // $("#btnTscroll").click(function () {
+            //     alert($("div").scrollTop());
+            // });
+
+            // Make a Clone 
+            // $("#btn-clone").click(function () {
+            //     $(".box").clone().appendTo(".container");
+            // });
+
+            // Append content to all .box elements
+            $('#btn-Append').click(function () {
+                $('.box').append('<div>Appended Text</div>');
+            });
+            // $("#btn-Append").click(function () {
+            //     $("<div>Appended Text</div>").appendTo(".box");
+            // });
+
+            // Set attribute 'title' to all .box elements
+            $('#btn-Attr').click(function () {
+                $(document).attr('title', 'New Title');
+            });
+            // $("#btn-RmvAttr").click(function () {
+            //     $(html).removeAttr('title');
+            // });
+
+            // Set CSS properties to all .box elements
+            $('#btn-Css').click(function () {
+                $('.box').css('background-color', 'red');
+            });
+
+            // Empty content of all .box elements
+            $('#btn-Empty').click(function () {
+                $('.box').empty();
+            });
+
+            $("#btn-HasClass").click(function () {
+                alert($("div").hasClass("box"));
+            });
+
+            // Set height of all .box elements
+            $('#btn-Height').click(function () {
+                $('.box').height('150px');
+                $('.box').width('150px');
+            });
+
+            $("#btn-HWI").click(function () {
+                var x = $(".box").position();
+                alert(
+                    "Top: " + x.top +
+                    "\nLeft: " + x.left +
+                    "\ninnerHeight: " + $("div").innerHeight() +
+                    "\ninnerWidth: " + $("div").innerWidth() +
+                    "\nouterHeight: " + $("div").outerHeight() +
+                    "\nouterWidth: " + $("div").outerWidth()
+                );
+            });
+
+
+
+
+
+
+
+            // Set HTML content of all .box elements
+            $('#btn-Html').click(function () {
+                $('.box').html('<strong>New HTML</strong>');
+            });
+
+
+
+
+            // Prepend content to all .box elements
+            $('#btn-Prepend').click(function () {
+                $('.box').prepend('<div>Prepended Text</div>');
+            });
+            // $("#btn-Prepend").click(function () {
+            //     $('<div>Prepended Text</div>').prependTo(".box");
+            // });
+
+            // Remove all .box elements
+            $('#btn-Remove').click(function () {
+                $('.box').remove();
+            });
+
+            // Remove class 'highlight' from all .box elements
+            $('#btn-RemoveClass').click(function () {
+                $('.box').removeClass('highlight');
+            });
+
+            // Set text content of all .box elements
+            $('#btn-Text').click(function () {
+                $('.box').text('New Set Text');
+            });
+
+            // Toggle class 'highlight' on all .box elements
+            $('#btn-ToggleClass').click(function () {
+                $('.box').toggleClass('highlight');
+            });
+
+            // // Wrap each paragraph with a div
+            $('#btn-wrap').click(function () {
+                $('.box').css('border', '20px solid black');
+            });
+
+            $('#btn-unwrap').click(function () {
+                $('.box').css('border', '2px solid black');
+            });
+
+
+
+        });
+    </script>
+</body>
+
+</html>
